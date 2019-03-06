@@ -1,0 +1,9 @@
+Entrada
+Primeira Linha: 
+	Numero de cavaleiro 
+	Posição minima esperada
+
+Linhas seguintes:
+	Pontução dos cavaleiros
+	esforço para vencer o cavaleiro
+
