@@ -1,0 +1,7 @@
+C:\Users\Patrick\Desktop\PUC-2019\Tap\Trabalho Pratico\Tornei_Vaufreixo-Trabalho_Pratico_Tap\Tonei_Vaufreixo\Tonei_Vaufreixo\obj\Debug\Tonei_Vaufreixo.csproj.CoreCompileInputs.cache
+C:\Users\Patrick\Desktop\PUC-2019\Tap\Trabalho Pratico\Tornei_Vaufreixo-Trabalho_Pratico_Tap\Tonei_Vaufreixo\Tonei_Vaufreixo\bin\Debug\Tonei_Vaufreixo.exe.config
+C:\Users\Patrick\Desktop\PUC-2019\Tap\Trabalho Pratico\Tornei_Vaufreixo-Trabalho_Pratico_Tap\Tonei_Vaufreixo\Tonei_Vaufreixo\bin\Debug\Tonei_Vaufreixo.exe
+C:\Users\Patrick\Desktop\PUC-2019\Tap\Trabalho Pratico\Tornei_Vaufreixo-Trabalho_Pratico_Tap\Tonei_Vaufreixo\Tonei_Vaufreixo\bin\Debug\Tonei_Vaufreixo.pdb
+C:\Users\Patrick\Desktop\PUC-2019\Tap\Trabalho Pratico\Tornei_Vaufreixo-Trabalho_Pratico_Tap\Tonei_Vaufreixo\Tonei_Vaufreixo\obj\Debug\Tonei_Vaufreixo.exe
+C:\Users\Patrick\Desktop\PUC-2019\Tap\Trabalho Pratico\Tornei_Vaufreixo-Trabalho_Pratico_Tap\Tonei_Vaufreixo\Tonei_Vaufreixo\obj\Debug\Tonei_Vaufreixo.pdb
+C:\Users\Patrick\Desktop\PUC-2019\Tap\Trabalho Pratico\Tornei_Vaufreixo-Trabalho_Pratico_Tap\Tonei_Vaufreixo\Tonei_Vaufreixo\obj\Debug\Tonei_Vaufreixo.csprojResolveAssemblyReference.cache

@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entrada.cs" />
+    <Compile Include="Interface.cs" />
     <Compile Include="Processa_Recursivo.cs" />
     <Compile Include="Processo_Interativo.cs" />
     <Compile Include="Program.cs" />
