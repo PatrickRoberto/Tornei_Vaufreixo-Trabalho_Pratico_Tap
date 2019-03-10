@@ -4,13 +4,59 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tonei_Vaufreixo
+namespace TP_TAP
 {
-
-      
-
     class Program
     {
+        static void Main(string[] args)
+        {
+            Console.WriteLine(DateTime.Now);
+
+            /*teste 1*/
+            Tuple<int, int>[] entradas = new Tuple<int, int>[3];
+            int posicaEsperada =2;
+
+            entradas[0] = new Tuple<int, int>(1, 1);
+            entradas[1] = new Tuple<int, int>(1, 4);
+            entradas[2] = new Tuple<int, int>(2, 2);
+
+            /*teste 2
+            //item1 = posicão, item2 = pontuação
+            Tuple<int, int>[] entradas = new Tuple<int, int>[2];
+            int posicaEsperada = 1;
+
+            entradas[0] = new Tuple<int, int>(3, 2);
+            entradas[1] = new Tuple<int, int>(4, 0);
+            */
+            // Calcula as possibilidade de vitoria e derreta
+
+            bool[,] possiblidades = CriarTabela(entradas.Length);
+
+            //item1 = gasto, item2 = pontos
+            Tuple<int, int>[] resultados = new Tuple<int, int>[(int)Math.Pow(2, entradas.Length)];
+
+            //Calcula a pontuações e gasto de cada possiblidade
+            CaluculoEsforco(possiblidades, entradas, resultados);
+
+            ExibirResultdo(resultados);
+
+            Console.WriteLine();
+            //Calcula qual vai ser o gasto minimo par ficar na possição esperada
+            int resposta = Posicao(entradas, resultados, possiblidades, posicaEsperada);
+
+            Console.WriteLine(resposta);
+
+            Console.WriteLine(DateTime.Now);
+            Console.ReadKey();
+
+            /*Mano, a parte interativa fechou, depois temos que 
+                Peensar em como fazer de forma reculsiva 
+                Fazer a leitura das entradas
+                Fazer os calculos que o professor pede */
+
+        }
+
+
         public static bool[,] CriarTabela(int num)
         {
             // Numero de variaveis e de conectivos
@@ -53,46 +99,50 @@ namespace Tonei_Vaufreixo
             return tabela;
         }
 
-        static void Main(string[] args)
+        private static int Posicao(Tuple<int, int>[] entradas, Tuple<int, int>[] resultados, bool[,] possiblidades, int posicaoEsperada)
         {
-            int nElem = 3; // Nesse Ponto determino quantos Elementos estou trabalhando
-            bool[,] possiblidades = CriarTabela(nElem);
+            int[] posicao = new int[resultados.Length];
 
+            for (int j = 0; j < resultados.Length; j++)
+            {
+                int pos = 1;
+                for (int i = 0; i < entradas.Length; i++)
+                {
+                    if (resultados[j].Item2 == entradas[i].Item1)
+                    {
+                        if (possiblidades[j, i] == false)
+                        {
+                            pos++;
+                        }
+                    }
+                    else if (resultados[j].Item2 < entradas[i].Item1)
+                    {
+                        pos++;
+                    }
+                }
+                posicao[j] = pos;
+            }
 
-            Tuple<int, int>[] entradas = new Tuple<int, int>[3];
+            int menorGasto = int.MaxValue;
+            bool existe = false;
+            for (int i = 0; i < posicao.Length; i++)
+            {
+                if (posicao[i] <= posicaoEsperada)
+                {
+                    if (menorGasto > resultados[i].Item1) menorGasto = resultados[i].Item1;
+                    existe = true;
+                }
+            }
 
+            if (!existe)
+            {
+                menorGasto = -1;
+            }
 
-            entradas[0] = new Tuple<int, int>(1, 1);
-            entradas[1] = new Tuple<int, int>(1, 4);
-            entradas[2] = new Tuple<int, int>(2, 2);
-
-            Tuple<int, int>[] resultados = new Tuple<int, int>[8];
-
-            NewMethod(possiblidades, entradas, resultados);
-
-            ExibirResultdo(resultados);
-
-            Console.ReadKey();
-            //Criar metodo de cabeçalho - 1
-
-            //Metodo - entrada - saida - 2
-            //Criar metodo de leitura do arquivo de entrada - caminho do arquivo de entrada - colocar a entrada em uma lista/vetor de objetos
-
-            //Criar de forma recursiva e interativa - 3
-            /* 
-             * Criar metodo de calculo de gasto vencendo cada openente - lista/vetor com as entradas - retorna uma lista com as possiblidade de pontos; esforço; e relação de vitorias;
-             * Criar um objeto que represente as possiblidades de saida
-            */
-
-            /*
-             * criar metodo que selecina a melhor posição que o Sir Ducan obteve - Lista de possibilidades - melhor possibilidade
-             * a regra selecionar a que teve o menor gasto, mas que mantenha dentro dos K conpetidores
-            */
-            //Exibir resultado - saido do metodo que seleciona o melhor competidor - exib o esforço minimo em tela. - 5
-
+            return menorGasto;
         }
 
-        private static void NewMethod(bool[,] possiblidades, Tuple<int, int>[] entradas, Tuple<int, int>[] resultados)
+        private static void CaluculoEsforco(bool[,] possiblidades, Tuple<int, int>[] entradas, Tuple<int, int>[] resultados)
         {
             for (int i = 0; i < resultados.Length; i++)
             {
