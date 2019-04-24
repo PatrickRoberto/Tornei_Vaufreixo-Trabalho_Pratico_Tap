@@ -59,7 +59,6 @@ namespace Tonei_Vaufreixo
 
         }
 
-
         private static void Esforco(bool[] possibilidade, Tuple<int, int>[] Entradas, int i, ref int Pontos, ref int esforco, ref int Possicao)
         {
             //Item 1 posicao, intem 2 esforço

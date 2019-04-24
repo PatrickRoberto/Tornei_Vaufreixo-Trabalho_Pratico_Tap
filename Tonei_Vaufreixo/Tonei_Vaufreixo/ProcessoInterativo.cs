@@ -23,7 +23,7 @@ namespace Tonei_Vaufreixo
 
             CaluculoEsforco(possiblidades, Entradas, resultados);
 
-            int resposta = Esfoco(Entradas, resultados, possiblidades, posEsperada);
+            int resposta = MenorEsforco(Entradas, resultados, possiblidades, posEsperada);
 
             return resposta;
 
@@ -92,7 +92,7 @@ namespace Tonei_Vaufreixo
             }
         }
 
-        private static int Esfoco(Tuple<int, int>[] entradas, Tuple<int, int>[] resultados, bool[,] possiblidades, int posicaoEsperada)
+        private static int MenorEsforco(Tuple<int, int>[] entradas, Tuple<int, int>[] resultados, bool[,] possiblidades, int posicaoEsperada)
         {
             int[] posicao = new int[resultados.Length];
 
@@ -104,19 +104,22 @@ namespace Tonei_Vaufreixo
                 for (int i = 0; i < entradas.Length; i++)
                 {
 
-                    if(!possiblidades[j, i])
-                    {
-                        if(resultados[j].Item2 <= entradas[i].Item1 + 1)
-                        {
-                            pos++;
-                        }
-                    }
-                    else if (resultados[j].Item2 < entradas[i].Item1)
+                    if ((resultados[j].Item2 < entradas[i].Item1) || (resultados[j].Item2 == entradas[i].Item1  && !possiblidades[j, i]))
                     {
                         pos++;
                     }
 
-
+                    //    if (!possiblidades[j, i]) //Se perdeu a luta
+                    //{
+                    //    if(resultados[j].Item2 <= entradas[i].Item1) //Se a pontuação for igual ou menor que a do oponente 
+                    //    {
+                           
+                    //    }
+                    //}
+                    //else if (resultados[j].Item2 < entradas[i].Item1)
+                    //{
+                    //    pos++;
+                    //}
                 }
                 
                 if(pos <= posicaoEsperada)
